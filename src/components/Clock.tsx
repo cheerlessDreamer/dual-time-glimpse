@@ -1,6 +1,8 @@
 import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
+import { Tooltip, TooltipContent, TooltipTrigger } from "@/components/ui/tooltip";
+import { Info } from "lucide-react";
 import AnalogClock from "./AnalogClock";
 import { useState, useEffect } from "react";
 
@@ -18,26 +20,34 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
   const [is24Hour, setIs24Hour] = useState(false);
   const [showColon, setShowColon] = useState(true);
   
-  // Update colon visibility based on even/odd seconds
   useEffect(() => {
     setShowColon(time.seconds % 2 === 0);
   }, [time.seconds]);
 
-  // Convert hours for 12-hour format if needed
   const displayHours = !is24Hour && totalHours === 24 
     ? time.hours % 12 || 12 
     : time.hours;
 
-  // Format the digital time
   const formattedHours = displayHours.toString().padStart(2, '0');
   const formattedMinutes = time.minutes.toString().padStart(2, '0');
   const formattedSeconds = time.seconds.toString().padStart(2, '0');
 
-  // Only show the toggle for the standard time clock
   const showToggle = totalHours === 24;
 
   return (
-    <Card className="p-8 flex flex-col items-center bg-white dark:bg-gray-800 shadow-lg min-h-[360px]">
+    <Card className="p-8 flex flex-col items-center bg-white dark:bg-gray-800 shadow-lg min-h-[360px] relative">
+      {totalHours === 10 && (
+        <div className="absolute top-4 right-4">
+          <Tooltip>
+            <TooltipTrigger asChild>
+              <Info className="h-5 w-5 text-gray-400 hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300 cursor-help" />
+            </TooltipTrigger>
+            <TooltipContent className="max-w-[250px] text-sm">
+              Decimal time divides the day into 10 hours, each hour into 100 minutes, and each minute into 100 seconds. This system was briefly used during the French Revolution.
+            </TooltipContent>
+          </Tooltip>
+        </div>
+      )}
       <div className="flex-1 flex flex-col items-center pt-4">
         <AnalogClock
           hours={displayHours}
