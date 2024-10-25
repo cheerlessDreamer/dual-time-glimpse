@@ -1,11 +1,39 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import { useEffect, useState } from "react";
+import { format } from "date-fns";
+import Clock from "@/components/Clock";
+import { getDecimalTime, formatDecimalTime } from "@/lib/timeUtils";
 
 const Index = () => {
+  const [currentTime, setCurrentTime] = useState(new Date());
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentTime(new Date());
+    }, 1000);
+
+    return () => clearInterval(timer);
+  }, []);
+
+  const standardTime = format(currentTime, "hh:mm");
+  const decimalTime = getDecimalTime(currentTime);
+  const formattedDecimalTime = formatDecimalTime(
+    decimalTime.hours,
+    decimalTime.minutes
+  );
+
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gray-100">
-      <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4">Welcome to Your Blank App</h1>
-        <p className="text-xl text-gray-600">Start building your amazing project here!</p>
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
+      <div className="max-w-4xl w-full">
+        <h1 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
+          Dual Time Display
+        </h1>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <Clock time={standardTime} label="Standard Time" />
+          <Clock time={formattedDecimalTime} label="Decimal Time" />
+        </div>
+        <p className="text-center mt-8 text-sm text-gray-500 dark:text-gray-400">
+          The decimal time system divides the day into 10 hours of 100 minutes each
+        </p>
       </div>
     </div>
   );
