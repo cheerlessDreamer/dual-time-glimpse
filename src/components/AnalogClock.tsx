@@ -32,8 +32,11 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
             }}>
               <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600" />
               <div 
-                className="absolute top-5 left-1/2 -translate-x-1/2 text-sm font-medium text-gray-600 dark:text-gray-400"
-                style={{ transform: `rotate(-${rotation}deg)` }}
+                className="absolute top-3 left-1/2 -translate-x-1/2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                style={{ 
+                  transform: `rotate(-${rotation}deg)`,
+                  marginTop: '2px'
+                }}
               >
                 {number}
               </div>
