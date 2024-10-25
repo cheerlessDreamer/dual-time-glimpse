@@ -33,26 +33,38 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
         ))}
       </div>
 
-      {/* Hour hand */}
-      <div
-        className="absolute left-1/2 top-1/2 w-1.5 h-16 bg-gray-800 dark:bg-gray-200 rounded-full origin-bottom"
-        style={{ transform: `translateX(-50%) rotate(${hourDegrees}deg)` }}
-      />
+      {/* Clock hands container */}
+      <div className="absolute inset-0">
+        {/* Hour hand */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1.5 h-16 bg-gray-800 dark:bg-gray-200 rounded-full"
+          style={{ 
+            transformOrigin: '50% 50%',
+            transform: `rotate(${hourDegrees}deg)`
+          }}
+        />
 
-      {/* Minute hand */}
-      <div
-        className="absolute left-1/2 top-1/2 w-1 h-20 bg-gray-600 dark:bg-gray-400 rounded-full origin-bottom"
-        style={{ transform: `translateX(-50%) rotate(${minuteDegrees}deg)` }}
-      />
+        {/* Minute hand */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-1 h-20 bg-gray-600 dark:bg-gray-400 rounded-full"
+          style={{ 
+            transformOrigin: '50% 50%',
+            transform: `rotate(${minuteDegrees}deg)`
+          }}
+        />
 
-      {/* Second hand */}
-      <div
-        className="absolute left-1/2 top-1/2 w-0.5 h-24 bg-red-500 rounded-full origin-bottom"
-        style={{ transform: `translateX(-50%) rotate(${secondDegrees}deg)` }}
-      />
+        {/* Second hand */}
+        <div
+          className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 w-0.5 h-24 bg-red-500 rounded-full"
+          style={{ 
+            transformOrigin: '50% 50%',
+            transform: `rotate(${secondDegrees}deg)`
+          }}
+        />
 
-      {/* Center dot */}
-      <div className="absolute left-1/2 top-1/2 w-3 h-3 bg-gray-800 dark:bg-gray-200 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+        {/* Center dot */}
+        <div className="absolute left-1/2 top-1/2 w-3 h-3 bg-gray-800 dark:bg-gray-200 rounded-full transform -translate-x-1/2 -translate-y-1/2" />
+      </div>
     </div>
   );
 };
