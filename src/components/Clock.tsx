@@ -59,13 +59,14 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
         </div>
       </div>
       {showToggle && (
-        <div className="flex items-center space-x-2 mt-4">
+        <div className="flex items-center space-x-3 mt-4 bg-gray-100 dark:bg-gray-700 p-2 rounded-lg">
           <Switch
             id="clock-format"
             checked={is24Hour}
             onCheckedChange={setIs24Hour}
+            className="data-[state=unchecked]:bg-gray-300 dark:data-[state=unchecked]:bg-gray-600"
           />
-          <Label htmlFor="clock-format">
+          <Label htmlFor="clock-format" className="text-sm font-medium cursor-pointer select-none">
             {is24Hour ? "24-hour" : "12-hour"} format
           </Label>
         </div>
