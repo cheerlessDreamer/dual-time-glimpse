@@ -2,7 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Switch } from "@/components/ui/switch";
 import { Label } from "@/components/ui/label";
 import AnalogClock from "./AnalogClock";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 interface ClockProps {
   time: {
@@ -16,11 +16,24 @@ interface ClockProps {
 
 const Clock = ({ time, label, totalHours }: ClockProps) => {
   const [is24Hour, setIs24Hour] = useState(true);
+  const [showColon, setShowColon] = useState(true);
   
+  // Handle colon blinking
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setShowColon(prev => !prev);
+    }, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
   // Convert hours for 12-hour format if needed
   const displayHours = !is24Hour && totalHours === 24 
     ? time.hours % 12 || 12 
     : time.hours;
+
+  // Format the digital time
+  const formattedHours = displayHours.toString().padStart(2, '0');
+  const formattedMinutes = time.minutes.toString().padStart(2, '0');
 
   // Only show the toggle for the standard time clock
   const showToggle = totalHours === 24;
@@ -34,8 +47,15 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
           seconds={time.seconds}
           totalHours={!is24Hour && totalHours === 24 ? 12 : totalHours}
         />
-        <div className="text-lg text-gray-500 dark:text-gray-400 font-medium mt-4">
-          {label}
+        <div className="flex flex-col items-center gap-1">
+          <div className="text-lg text-gray-500 dark:text-gray-400 font-medium mt-4">
+            {label}
+          </div>
+          <div className="text-base text-gray-600 dark:text-gray-300 font-mono">
+            {formattedHours}
+            <span className={showColon ? "opacity-100" : "opacity-0"}>:</span>
+            {formattedMinutes}
+          </div>
         </div>
       </div>
       {showToggle && (
