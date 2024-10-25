@@ -35,7 +35,8 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
                 className="absolute top-3 left-1/2 -translate-x-1/2 text-sm font-medium text-gray-600 dark:text-gray-400"
                 style={{ 
                   transform: `rotate(-${rotation}deg)`,
-                  marginTop: '2px'
+                  marginTop: '2px',
+                  marginLeft: '-8px'
                 }}
               >
                 {number}
