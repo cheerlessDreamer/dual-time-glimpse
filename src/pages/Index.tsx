@@ -5,17 +5,27 @@ import { getDecimalTime, formatDecimalTime } from "@/lib/timeUtils";
 
 const Index = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
+  const [decimalCurrentTime, setDecimalCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    const timer = setInterval(() => {
+    // Standard time update every second
+    const standardTimer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
-    return () => clearInterval(timer);
+    // Decimal time update every ~86.4ms (1/1000th of a decimal day)
+    const decimalTimer = setInterval(() => {
+      setDecimalCurrentTime(new Date());
+    }, 86.4);
+
+    return () => {
+      clearInterval(standardTimer);
+      clearInterval(decimalTimer);
+    };
   }, []);
 
   const standardTime = format(currentTime, "HH:mm:ss");
-  const decimalTime = getDecimalTime(currentTime);
+  const decimalTime = getDecimalTime(decimalCurrentTime);
   const formattedDecimalTime = formatDecimalTime(
     decimalTime.hours,
     decimalTime.minutes,
