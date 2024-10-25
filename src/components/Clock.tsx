@@ -35,7 +35,7 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
   const showToggle = totalHours === 24;
 
   return (
-    <Card className="p-8 flex flex-col items-center bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-shadow duration-300 min-h-[360px] relative">
+    <Card className="p-8 flex flex-col items-center bg-white dark:bg-gray-800 shadow-lg hover:shadow-xl transition-all duration-300 min-h-[360px] relative hover:border hover:border-gray-400 dark:hover:border-gray-500">
       {totalHours === 10 && (
         <div className="absolute top-4 right-4">
           <Tooltip>
