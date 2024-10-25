@@ -78,12 +78,12 @@
 
 /* Add smooth transition for theme changes */
 :root {
-  transition: all 150ms ease;
+  transition: all 200ms ease;
 }
 
 * {
-  transition: background-color 150ms ease,
-              border-color 150ms ease,
-              color 150ms ease,
-              fill 150ms ease;
+  transition: background-color 200ms ease,
+              border-color 200ms ease,
+              color 200ms ease,
+              fill 200ms ease;
 }
