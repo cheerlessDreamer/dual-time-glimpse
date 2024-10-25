@@ -18,13 +18,13 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
   const [is24Hour, setIs24Hour] = useState(true);
   const [showColon, setShowColon] = useState(true);
   
-  // Handle colon blinking
+  // Handle colon blinking based on clock type
   useEffect(() => {
     const interval = setInterval(() => {
       setShowColon(prev => !prev);
-    }, 1000);
+    }, totalHours === 24 ? 1000 : 864); // 864ms for decimal time (0.864 seconds)
     return () => clearInterval(interval);
-  }, []);
+  }, [totalHours]);
 
   // Convert hours for 12-hour format if needed
   const displayHours = !is24Hour && totalHours === 24 
