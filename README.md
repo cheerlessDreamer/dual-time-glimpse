@@ -1,71 +1,81 @@
-# Welcome to your GPT Engineer project
+# Dual Time Glimpse
 
-## Project info
+A modern web application that displays both standard time and decimal time side by side. This project provides an interactive way to compare our conventional 24-hour time system with the decimal time system, featuring both digital and analog clock displays.
 
-**URL**: https://run.gptengineer.app/projects/1de308ac-2e68-44b5-a3ac-6596d4e95f94/improve
+## About Decimal Time
 
-## How can I edit this code?
+Decimal time (also known as French Revolutionary Time) was introduced during the French Revolution as part of a larger attempt to decimalize various types of measurements. In this system:
 
-There are several ways of editing your application.
+- The day is divided into 10 hours
+- Each hour contains 100 minutes
+- Each minute contains 100 seconds
 
-**Use GPT Engineer**
+This means that:
+- 1 decimal hour = 2.4 standard hours
+- 1 decimal minute = 1.44 standard minutes
+- 1 decimal second = 0.864 standard seconds
 
-Simply visit the GPT Engineer project at [GPT Engineer](https://gptengineer.app/projects/1de308ac-2e68-44b5-a3ac-6596d4e95f94/improve) and start prompting.
+The system was officially introduced in France on November 24, 1793, but was suspended by Napoleon on April 7, 1795, and was officially abandoned in 1806. Although it didn't gain widespread adoption, it represents a fascinating attempt to rationalize time measurement using the decimal system.
 
-Changes made via gptengineer.app will be committed automatically to this repo.
+## Features
 
-**Use your preferred IDE**
+- Real-time display of both standard and decimal time
+- Interactive analog clock faces
+- Dark/light theme toggle
+- Responsive design
+- 12/24-hour format toggle for standard time
 
-If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in the GPT Engineer UI.
+## Getting Started
 
-The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
+### Prerequisites
 
-Follow these steps:
+Make sure you have Node.js installed on your system. We recommend using [nvm](https://github.com/nvm-sh/nvm) to manage your Node.js versions.
 
-```sh
-# Step 1: Clone the repository using the project's Git URL.
-git clone <YOUR_GIT_URL>
+### Installation
 
-# Step 2: Navigate to the project directory.
-cd <YOUR_PROJECT_NAME>
+1. Clone the repository:
+```bash
+git clone <repository-url>
+```
 
-# Step 3: Install the necessary dependencies.
-npm i
+2. Navigate to the project directory:
+```bash
+cd dual-time-glimpse
+```
 
-# Step 4: Start the development server with auto-reloading and an instant preview.
+3. Install dependencies:
+```bash
+npm install
+```
+
+4. Start the development server:
+```bash
 npm run dev
 ```
 
-**Edit a file directly in GitHub**
+5. Open your browser and visit:
+```
+http://localhost:5173
+```
 
-- Navigate to the desired file(s).
-- Click the "Edit" button (pencil icon) at the top right of the file view.
-- Make your changes and commit the changes.
+## Built With
 
-**Use GitHub Codespaces**
+- [Vite](https://vitejs.dev/) - Next Generation Frontend Tooling
+- [React](https://reactjs.org/) - A JavaScript library for building user interfaces
+- [TypeScript](https://www.typescriptlang.org/) - JavaScript with syntax for types
+- [Tailwind CSS](https://tailwindcss.com/) - A utility-first CSS framework
+- [shadcn/ui](https://ui.shadcn.com/) - Re-usable components built with Radix UI and Tailwind CSS
 
-- Navigate to the main page of your repository.
-- Click on the "Code" button (green button) near the top right.
-- Select the "Codespaces" tab.
-- Click on "New codespace" to launch a new Codespace environment.
-- Edit files directly within the Codespace and commit and push your changes once you're done.
+## Contributing
 
-## What technologies are used for this project?
+Contributions are welcome! Please feel free to submit a Pull Request.
 
-This project is built with .
+## License
 
-- Vite
-- TypeScript
-- React
-- shadcn-ui
-- Tailwind CSS
+This project is licensed under the MIT License - see the LICENSE file for details.
 
-## How can I deploy this project?
+## Acknowledgments
 
-All GPT Engineer projects can be deployed directly via the GPT Engineer app.
-
-Simply visit your project at [GPT Engineer](https://gptengineer.app/projects/1de308ac-2e68-44b5-a3ac-6596d4e95f94/improve) and click on Share -> Publish.
-
-## I want to use a custom domain - is that possible?
-
-We don't support custom domains (yet). If you want to deploy your project under your own domain then we recommend using Netlify. Visit our docs for more details: [Custom domains](https://docs.gptengineer.app/tips-tricks/custom-domain/)
+- Inspired by the French Revolutionary decimal time system
+- Built with modern web technologies
+- Made with ❤️ by [Thomas](https://thomashallen.com) in 🇸🇪
