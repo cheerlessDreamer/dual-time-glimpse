@@ -38,9 +38,6 @@ const Index = () => {
           <Clock time={standardTimeObj} label="Standard Time" totalHours={24} />
           <Clock time={decimalTime} label="Decimal Time" totalHours={10} />
         </div>
-        <p className="text-center mt-8 text-sm font-light text-gray-500 dark:text-gray-400">
-          The decimal time system divides the day into 10 hours of 100 minutes each
-        </p>
       </div>
     </div>
   );
