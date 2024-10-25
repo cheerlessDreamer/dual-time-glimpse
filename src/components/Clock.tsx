@@ -15,7 +15,7 @@ interface ClockProps {
 }
 
 const Clock = ({ time, label, totalHours }: ClockProps) => {
-  const [is24Hour, setIs24Hour] = useState(true);
+  const [is24Hour, setIs24Hour] = useState(false);
   const [showColon, setShowColon] = useState(true);
   
   // Update colon visibility based on even/odd seconds
