@@ -14,16 +14,19 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
   const secondDegrees = (seconds / 60) * 360;
 
   return (
-    <div className="relative w-48 h-48 rounded-full border-4 border-gray-200 dark:border-gray-700">
+    <div className="relative w-48 h-48">
+      {/* Outer frame */}
+      <div className="absolute inset-0 rounded-full border-4 border-gray-200 dark:border-gray-700" />
+      
       {/* Clock face */}
-      <div className="absolute inset-0 rounded-full">
+      <div className="absolute inset-0">
         {/* Hour markers */}
         {Array.from({ length: totalHours }).map((_, i) => (
           <div
             key={i}
-            className="absolute w-1 h-4 bg-gray-400 dark:bg-gray-600"
+            className="absolute left-1/2 top-0 -translate-x-1/2 w-1 h-3 bg-gray-400 dark:bg-gray-600 origin-bottom"
             style={{
-              transform: `rotate(${(i * 360) / totalHours}deg) translateY(8px)`,
+              transform: `translateX(-50%) rotate(${(i * 360) / totalHours}deg)`,
               transformOrigin: '50% 96px',
             }}
           />
@@ -32,20 +35,20 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
 
       {/* Hour hand */}
       <div
-        className="absolute left-1/2 top-1/2 w-1.5 h-16 bg-gray-800 dark:bg-gray-200 rounded-full origin-bottom transform -translate-x-1/2"
-        style={{ transform: `rotate(${hourDegrees}deg) translateX(-50%)` }}
+        className="absolute left-1/2 top-1/2 w-1.5 h-16 bg-gray-800 dark:bg-gray-200 rounded-full origin-bottom"
+        style={{ transform: `translateX(-50%) rotate(${hourDegrees}deg)` }}
       />
 
       {/* Minute hand */}
       <div
-        className="absolute left-1/2 top-1/2 w-1 h-20 bg-gray-600 dark:bg-gray-400 rounded-full origin-bottom transform -translate-x-1/2"
-        style={{ transform: `rotate(${minuteDegrees}deg) translateX(-50%)` }}
+        className="absolute left-1/2 top-1/2 w-1 h-20 bg-gray-600 dark:bg-gray-400 rounded-full origin-bottom"
+        style={{ transform: `translateX(-50%) rotate(${minuteDegrees}deg)` }}
       />
 
       {/* Second hand */}
       <div
-        className="absolute left-1/2 top-1/2 w-0.5 h-24 bg-red-500 rounded-full origin-bottom transform -translate-x-1/2"
-        style={{ transform: `rotate(${secondDegrees}deg) translateX(-50%)` }}
+        className="absolute left-1/2 top-1/2 w-0.5 h-24 bg-red-500 rounded-full origin-bottom"
+        style={{ transform: `translateX(-50%) rotate(${secondDegrees}deg)` }}
       />
 
       {/* Center dot */}
