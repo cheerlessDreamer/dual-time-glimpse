@@ -59,12 +59,12 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
           <div className="text-lg text-gray-500 dark:text-gray-400 font-medium mt-4">
             {label}
           </div>
-          <div className="text-base text-gray-600 dark:text-gray-300 font-mono">
-            {formattedHours}
-            <span className={showColon ? "opacity-100" : "opacity-0"}>:</span>
-            {formattedMinutes}
-            <span className={showColon ? "opacity-100" : "opacity-0"}>:</span>
-            {formattedSeconds}
+          <div className="text-2xl text-gray-600 dark:text-gray-300 font-mono tracking-wider">
+            <span>{formattedHours}</span>
+            <span className={`text-gray-400 dark:text-gray-500 ${showColon ? "opacity-100" : "opacity-0"}`}>:</span>
+            <span>{formattedMinutes}</span>
+            <span className={`text-gray-400 dark:text-gray-500 ${showColon ? "opacity-100" : "opacity-0"}`}>:</span>
+            <span>{formattedSeconds}</span>
           </div>
         </div>
       </div>
