@@ -33,7 +33,7 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
       <div className="max-w-4xl w-full">
         <h1 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
-          Dual Time Display
+          Standard vs Decimal Time
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Clock time={standardTimeObj} label="Standard Time" totalHours={24} />
