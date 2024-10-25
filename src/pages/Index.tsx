@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import Clock from "@/components/Clock";
 import { getDecimalTime } from "@/lib/timeUtils";
+import { ThemeToggle } from "@/components/ThemeToggle";
 
 const Index = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -31,6 +32,7 @@ const Index = () => {
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
+      <ThemeToggle />
       <div className="max-w-4xl w-full">
         <h1 className="text-3xl font-bold text-center mb-8 text-gray-800 dark:text-gray-100">
           Standard vs Decimal Time
