@@ -9,11 +9,15 @@ interface AnalogClockProps {
 
 const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) => {
   // Convert time to degrees for rotation
-  const hourDegrees = (hours / totalHours) * 360 + (minutes / (60 * totalHours)) * 360;
+  const hourDegrees = totalHours === 10
+    ? (hours / totalHours) * 360 + (minutes / (100 * totalHours)) * 360  // Decimal time: 100 minutes per hour
+    : (hours / totalHours) * 360 + (minutes / (60 * totalHours)) * 360;  // Standard time: 60 minutes per hour
+    
   // For decimal time (10-hour clock), we need to adjust the minutes to rotate fully in 100 minutes
   const minuteDegrees = totalHours === 10 
     ? (minutes / 100) * 360  // Decimal time: 100 minutes per hour
     : (minutes / 60) * 360;  // Standard time: 60 minutes per hour
+    
   // For decimal time (10-hour clock), we need to adjust the seconds to rotate fully in 100 seconds
   const secondDegrees = totalHours === 10 
     ? (seconds / 100) * 360  // Decimal time: 100 seconds per minute
