@@ -11,7 +11,10 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
   // Convert time to degrees for rotation
   const hourDegrees = (hours / totalHours) * 360 + (minutes / (60 * totalHours)) * 360;
   const minuteDegrees = (minutes / 60) * 360;
-  const secondDegrees = (seconds / 60) * 360;
+  // For decimal time (10-hour clock), we need to adjust the seconds to rotate fully in 100 seconds
+  const secondDegrees = totalHours === 10 
+    ? (seconds / 100) * 360  // Decimal time: 100 seconds per minute
+    : (seconds / 60) * 360;  // Standard time: 60 seconds per minute
 
   return (
     <div className="relative w-48 h-48">
