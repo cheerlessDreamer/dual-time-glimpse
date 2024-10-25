@@ -5,9 +5,11 @@ export const getDecimalTime = (date: Date) => {
   const msSinceMidnight = date.getTime() - midnight.getTime();
   const dayProgress = msSinceMidnight / (24 * 60 * 60 * 1000);
   
-  const decimalHours = Math.floor(dayProgress * 10);
-  const decimalMinutes = Math.floor((dayProgress * 10 * 100) % 100);
-  const decimalSeconds = Math.floor((dayProgress * 10 * 100 * 100) % 100);
+  const totalDecimalSeconds = Math.floor(dayProgress * 10 * 100 * 100);
+  
+  const decimalHours = Math.floor(totalDecimalSeconds / (100 * 100));
+  const decimalMinutes = Math.floor((totalDecimalSeconds % (100 * 100)) / 100);
+  const decimalSeconds = totalDecimalSeconds % 100;
   
   return {
     hours: decimalHours,
