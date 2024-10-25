@@ -74,7 +74,7 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
             id="clock-format"
             checked={is24Hour}
             onCheckedChange={setIs24Hour}
-            className="data-[state=unchecked]:bg-gray-300 dark:data-[state=unchecked]:bg-gray-600"
+            className="data-[state=checked]:bg-red-500 dark:data-[state=checked]:bg-red-500 data-[state=unchecked]:bg-gray-300 dark:data-[state=unchecked]:bg-gray-600"
           />
           <Label htmlFor="clock-format" className="text-sm font-medium cursor-pointer select-none">
             {is24Hour ? "24-hour" : "12-hour"} format
