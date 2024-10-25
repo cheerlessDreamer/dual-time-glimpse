@@ -14,11 +14,12 @@ const Index = () => {
     return () => clearInterval(timer);
   }, []);
 
-  const standardTime = format(currentTime, "hh:mm");
+  const standardTime = format(currentTime, "HH:mm:ss");
   const decimalTime = getDecimalTime(currentTime);
   const formattedDecimalTime = formatDecimalTime(
     decimalTime.hours,
-    decimalTime.minutes
+    decimalTime.minutes,
+    decimalTime.seconds
   );
 
   return (

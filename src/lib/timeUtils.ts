@@ -7,13 +7,15 @@ export const getDecimalTime = (date: Date) => {
   
   const decimalHours = Math.floor(dayProgress * 10);
   const decimalMinutes = Math.floor((dayProgress * 10 * 100) % 100);
+  const decimalSeconds = Math.floor((dayProgress * 10 * 100 * 100) % 100);
   
   return {
     hours: decimalHours,
-    minutes: decimalMinutes
+    minutes: decimalMinutes,
+    seconds: decimalSeconds
   };
 };
 
-export const formatDecimalTime = (hours: number, minutes: number): string => {
-  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}`;
+export const formatDecimalTime = (hours: number, minutes: number, seconds: number): string => {
+  return `${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
 };
