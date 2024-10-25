@@ -1,19 +1,16 @@
 import { useEffect, useState } from "react";
-import { format } from "date-fns";
 import Clock from "@/components/Clock";
-import { getDecimalTime, formatDecimalTime } from "@/lib/timeUtils";
+import { getDecimalTime } from "@/lib/timeUtils";
 
 const Index = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
   const [decimalCurrentTime, setDecimalCurrentTime] = useState(new Date());
 
   useEffect(() => {
-    // Standard time update every second
     const standardTimer = setInterval(() => {
       setCurrentTime(new Date());
     }, 1000);
 
-    // Decimal time update every ~86.4ms (1/1000th of a decimal day)
     const decimalTimer = setInterval(() => {
       setDecimalCurrentTime(new Date());
     }, 86.4);
@@ -24,13 +21,13 @@ const Index = () => {
     };
   }, []);
 
-  const standardTime = format(currentTime, "HH:mm:ss");
+  const standardTimeObj = {
+    hours: currentTime.getHours(),
+    minutes: currentTime.getMinutes(),
+    seconds: currentTime.getSeconds(),
+  };
+
   const decimalTime = getDecimalTime(decimalCurrentTime);
-  const formattedDecimalTime = formatDecimalTime(
-    decimalTime.hours,
-    decimalTime.minutes,
-    decimalTime.seconds
-  );
 
   return (
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
@@ -39,8 +36,8 @@ const Index = () => {
           Dual Time Display
         </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <Clock time={standardTime} label="Standard Time" />
-          <Clock time={formattedDecimalTime} label="Decimal Time" />
+          <Clock time={standardTimeObj} label="Standard Time" totalHours={24} />
+          <Clock time={decimalTime} label="Decimal Time" totalHours={10} />
         </div>
         <p className="text-center mt-8 text-sm text-gray-500 dark:text-gray-400">
           The decimal time system divides the day into 10 hours of 100 minutes each
