@@ -34,9 +34,6 @@ const Index = () => {
     <div className="min-h-screen bg-gray-50 dark:bg-gray-900 flex items-center justify-center p-4">
       <ThemeToggle />
       <div className="max-w-4xl w-full">
-        <h1 className="text-3xl font-light text-center mb-8 text-gray-800 dark:text-gray-100">
-          Standard vs Decimal Time
-        </h1>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <Clock time={standardTimeObj} label="Standard Time" totalHours={24} />
           <Clock time={decimalTime} label="Decimal Time" totalHours={10} />
