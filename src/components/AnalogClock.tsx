@@ -20,17 +20,26 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
       
       {/* Clock face */}
       <div className="absolute inset-0">
-        {/* Hour markers */}
-        {Array.from({ length: totalHours }).map((_, i) => (
-          <div
-            key={i}
-            className="absolute left-1/2 top-0 -translate-x-1/2 w-1 h-3 bg-gray-400 dark:bg-gray-600 origin-bottom"
-            style={{
-              transform: `translateX(-50%) rotate(${(i * 360) / totalHours}deg)`,
+        {/* Hour markers and numbers */}
+        {Array.from({ length: totalHours }).map((_, i) => {
+          const rotation = (i * 360) / totalHours;
+          const number = i === 0 ? totalHours : i;
+          
+          return (
+            <div key={i} className="absolute left-1/2 top-0 -translate-x-1/2 origin-bottom" style={{
+              transform: `rotate(${rotation}deg)`,
               transformOrigin: '50% 96px',
-            }}
-          />
-        ))}
+            }}>
+              <div className="w-1 h-3 bg-gray-400 dark:bg-gray-600" />
+              <div 
+                className="absolute top-5 left-1/2 -translate-x-1/2 text-sm font-medium text-gray-600 dark:text-gray-400"
+                style={{ transform: `rotate(-${rotation}deg)` }}
+              >
+                {number}
+              </div>
+            </div>
+          );
+        })}
       </div>
 
       {/* Clock hands container */}
