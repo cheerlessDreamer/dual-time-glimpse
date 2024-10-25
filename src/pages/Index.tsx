@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import Clock from "@/components/Clock";
 import { getDecimalTime } from "@/lib/timeUtils";
 import { ThemeToggle } from "@/components/ThemeToggle";
+import Footer from "@/components/Footer";
 
 const Index = () => {
   const [currentTime, setCurrentTime] = useState(new Date());
@@ -39,6 +40,7 @@ const Index = () => {
           <Clock time={decimalTime} label="Decimal Time" totalHours={10} />
         </div>
       </div>
+      <Footer />
     </div>
   );
 };
