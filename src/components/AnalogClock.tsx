@@ -25,15 +25,6 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
           const rotation = (i * 360) / totalHours;
           const number = i === 0 ? totalHours : i;
           
-          // Calculate offset based on number position
-          const getOffset = (num: number) => {
-            if (num === 12 || num === 10) return -8;
-            if (num === 1 || num === 2) return -12;
-            if (num === 4 || num === 5) return -14;
-            if (num === 7 || num === 8) return -12;
-            return -14;
-          };
-          
           return (
             <div key={i} className="absolute left-1/2 top-0 -translate-x-1/2 origin-bottom" style={{
               transform: `rotate(${rotation}deg)`,
@@ -45,7 +36,7 @@ const AnalogClock = ({ hours, minutes, seconds, totalHours }: AnalogClockProps) 
                 style={{ 
                   transform: `rotate(-${rotation}deg)`,
                   marginTop: '2px',
-                  marginLeft: `${getOffset(number)}px`
+                  marginLeft: '-6px'
                 }}
               >
                 {number}
