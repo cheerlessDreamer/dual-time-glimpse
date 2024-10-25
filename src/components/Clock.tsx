@@ -31,6 +31,7 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
   // Format the digital time
   const formattedHours = displayHours.toString().padStart(2, '0');
   const formattedMinutes = time.minutes.toString().padStart(2, '0');
+  const formattedSeconds = time.seconds.toString().padStart(2, '0');
 
   // Only show the toggle for the standard time clock
   const showToggle = totalHours === 24;
@@ -52,6 +53,8 @@ const Clock = ({ time, label, totalHours }: ClockProps) => {
             {formattedHours}
             <span className={showColon ? "opacity-100" : "opacity-0"}>:</span>
             {formattedMinutes}
+            <span className={showColon ? "opacity-100" : "opacity-0"}>:</span>
+            {formattedSeconds}
           </div>
         </div>
       </div>
